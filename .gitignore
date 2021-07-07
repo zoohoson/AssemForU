@@ -7,3 +7,6 @@ __pycache__
 
 # db
 db.sqlite3
+
+.idea
+logs

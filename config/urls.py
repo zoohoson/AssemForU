@@ -14,8 +14,15 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
+from naSearch import views
+from naSearch.views import base_views
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('common/', include('common.urls')),
+    path('naSearch/', include('naSearch.urls')),
+    path('', base_views.index, name='index'),  # '/' 에 해당되는 path
 ]
+handler404 = 'common.views.page_not_found'
