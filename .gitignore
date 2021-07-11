@@ -8,5 +8,8 @@ __pycache__
 # db
 db.sqlite3
 
+# Mac
+.DS_Store
+
 .idea
 logs
