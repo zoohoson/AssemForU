@@ -1,0 +1,69 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container my-3">
+    <table class="table">
+        <thead>
+            <tr class="thead-dark">
+                <th>번호</th>
+                <th>제목</th>
+                <th>작성일시</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% if bill_list %}
+        {% for bill in bill_list %}
+        <tr>
+            <td>{{ forloop.counter }}</td>
+            <td>
+                <a href="/naSearch/{{ bill }}/">{{ bill }}</a>
+            </td>
+            <td>{{ bill.create_date }}</td>
+        </tr>
+        {% endfor %}
+        {% else %}
+        <tr>
+            <td colspan='3'>검색 결과가 없습니다.</td>
+        </tr>
+        {% endif %}
+        </tbody>
+    </table>
+    <!--페이징 처리 시작-->
+    <ul class="pagination justify-content-center">
+        <!--이전 페이지-->
+        {% if bill_list.has_previous %}
+        <li class="page-item">
+            <a class = "page-link" href="?page={{ bill_list.previous_page_number }}">이전</a>
+        </li>
+        {% else %}
+        <li class="page-item disabled">
+            <a class="page-link" tabindex="-1" aria-disabled="true" href="#">이전</a>
+        </li>
+        {% endif %}
+        <!--페이지 리스트 -->
+        {% for page_number in bill_list.paginator.page_range %}
+        {% if page_number >= bill_list.number|add:-5 and page_number <= bill_list.number|add:5 %}
+            {% if page_number == bill_list.number %}
+            <li class="page-item active" aria-current="page">
+                <a class="page-link" href="?page={{ page_number }}">{{ page_number }}</a>
+            </li>
+            {% else %}
+            <li class="page-item">
+                <a class="page-link" href="?page={{ page_number }}">{{ page_number }}</a>
+            </li>
+            {% endif %}
+        {% endif %}
+        {% endfor %}
+        {% if bill_list.has_next %}
+        <li class="page-item">
+            <a class="page-link" href="?page={{ bill_list.next_page_number }}">다음</a>
+        </li>
+        {% else %}
+        <li class="page-item disabled">
+            <a class="page-link" tabindex="-1" aria-disabled="true" href="#">다음</a>
+        </li>
+        {% endif %}
+    </ul>
+
+</div>
+
+{% endblock %}

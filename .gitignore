@@ -1,0 +1,12 @@
+# python compiled code
+*.pyc
+__pycache__
+
+# ipython
+.ipynb
+
+# db
+db.sqlite3
+
+.idea
+logs
