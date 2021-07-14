@@ -4,20 +4,18 @@
     <table class="table">
         <thead>
             <tr class="thead-dark">
-                <th>번호</th>
-                <th>제목</th>
-                <th>작성일시</th>
+                <th>의안번호</th>
+                <th>의안</th>
+                <th>유사도</th>
             </tr>
         </thead>
         <tbody>
         {% if bill_list %}
-        {% for bill in bill_list %}
+        {% for bill in bill_list.result %}
         <tr>
-            <td>{{ forloop.counter }}</td>
-            <td>
-                <a href="/naSearch/{{ bill }}/">{{ bill }}</a>
-            </td>
-            <td>{{ bill.create_date }}</td>
+            <td><a href="/naSearch/{{ bill }}/">{{ bill.0 }}</a></td>
+            <td><a href="/naSearch/{{ bill }}/">{{ bill.1 }}</a></td>
+            <td><a href="/naSearch/{{ bill }}/">{{ bill.2 }}</a></td>
         </tr>
         {% endfor %}
         {% else %}
