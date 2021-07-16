@@ -13,17 +13,18 @@ def index(request):
 
     query_search = request.GET.get('query', '')
 
-    if query_search:print(query_search)
-
-    bill_list = Answer.Get_similarity(query_search)
+    if query_search:
+        print(query_search)
+        Answer.Get_similarity(query_search)
 
     #page = request.GET.get('page', '1')
     #paginator = Paginator(bill_list,10)
     #page_obj = paginator.get_page(page)
     #context = {'bill_list',page_obj}
 
-    context = {'bill_list': bill_list}
+        bill_list = Answer()
 
-    return render(request, 'naSearch/bill_list.html', context)
-
-
+        context = {'bill_list' : bill_list}
+        return render(request, 'naSearch/bill_list.html', context)
+    else :
+        return render(request,'naSearch/bill_list.html',{'bill_list': None})
