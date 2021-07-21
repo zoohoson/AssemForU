@@ -10,6 +10,8 @@ db.sqlite3
 
 # Mac
 .DS_Store
+# Windows
+desktop.ini
 
 .idea
 logs
