@@ -1,9 +1,14 @@
 from django.core.paginator import Paginator
 from django.shortcuts import render, get_object_or_404
+from django.http import HttpResponse
 # from ..models import ?
 
+
 def mainPage(request):
-    
+    """
+    main 화면
+    """
+    return render(request, 'naSearch/main_page.html')
 
 
 def index(request):
