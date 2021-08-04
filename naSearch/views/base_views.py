@@ -4,7 +4,7 @@ from django.http import HttpResponse
 # from ..models import ?
 
 
-def mainPage(request):
+def main_page(request):
     """
     main 화면
     """

@@ -1,14 +1,23 @@
+{% load static %}
 <!doctype html>
 <html lang="ko">
-
 <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- naSearch CSS -->
+    <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
     <title>국회검색시스템</title>
+    <script src="https://kit.fontawesome.com/8eb5905426.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
-    <div class="main">
-        <img class="na_fig"
-            src=""
-            alt="National Assembly logo">
+    <div class="nalogo">
+        <img src="https://www.assembly.go.kr/resources/web/assm/images/img/img_assemblyMark_02.gif"
+            src="logo/logo.gif"
+            alt="NationalAssemblyLogo">
+    </div>
+    <div class="search">
+        <input type="text" placeholder="&#xf002;  검색어를 입력하세요. 비트코인을 입력해보세요.">
+    </div>
 </body>
 </html>
