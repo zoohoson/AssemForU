@@ -9,6 +9,7 @@ __pycache__
 db.sqlite3
 
 # Mac
+Icon?
 .DS_Store
 # Windows
 desktop.ini
