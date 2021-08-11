@@ -35,3 +35,11 @@ def index(request):
         return render(request, 'naSearch/bill_list.html', context)
     else :
         return render(request,'naSearch/bill_list.html',{'bill_list': None})
+
+def detail(request, bill_id):
+    """
+    bill info
+    """
+    bill = 1
+    context = {'bill': bill}
+    return render(request, 'naSearch/bill_info.html', context)
