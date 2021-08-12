@@ -9,6 +9,7 @@
                 <th>유사도</th>
             </tr>
         </thead>
+
         <tbody>
         {% if bill_list %}
         {% for bill in bill_list.result %}
@@ -24,6 +25,7 @@
         </tr>
         {% endif %}
         </tbody>
+        
     </table>
     <!--페이징 처리 시작-->
     <ul class="pagination justify-content-center">

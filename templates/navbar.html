@@ -1,6 +1,6 @@
 <nav class="navbar navbar-light bg-light justify-content-between fixed-top">
     <a class="navbar-brand">Navbar</a>
-    <form id="searchForm" method="get" action="{% url 'index' %}" class="form-inline" >
+    {% comment %} <form id="searchForm" method="get" action="{% url 'index' %}" class="form-inline" > {% endcomment %}
         <input id="query" name="query" class="form-control query_search" type="text" placeholder="Search" aria-label="Search" value="{{ kw|default_if_none:'' }}">
         <button class="btn btn-outline-success my-2 my-sm-0" type="submit" id="btn_search">Search</button>
     </form>

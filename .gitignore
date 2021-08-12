@@ -3,6 +3,7 @@
 __pycache__
 
 # ipython
+.ipynb_checkpoints
 .ipynb
 
 # db
@@ -11,6 +12,7 @@ db.sqlite3
 # Mac
 Icon?
 .DS_Store
+
 # Windows
 desktop.ini
 
@@ -19,3 +21,9 @@ logs
 
 # contents for server
 contents
+
+# param for model
+naSearch/data/
+hannanum_Fasttext.model.trainables.vectors_ngrams_lockf.npy
+.model
+.npy
