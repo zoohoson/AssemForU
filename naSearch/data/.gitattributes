@@ -1,4 +1,0 @@
-merge_naver_data.csv filter=lfs diff=lfs merge=lfs -text
-word2vec_with_hannanum_3 filter=lfs diff=lfs merge=lfs -text
-hannanum_Fasttext.model.trainables.vectors_ngrams_lockf.npy filter=lfs diff=lfs merge=lfs -text
-hannanum_Fasttext.model.wv.vectors_ngrams.npy filter=lfs diff=lfs merge=lfs -text

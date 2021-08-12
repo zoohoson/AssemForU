@@ -6,16 +6,22 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- jQuery JS -->
+    <script src="{% static 'jquery-3.6.0.min.js' %}"></script>
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" type="text/css" href="{% static 'bootstrap.min.css' %}">
     <!-- naSearch CSS -->
     <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+    <!-- fontawesome CSS -->
+    <script src="https://kit.fontawesome.com/8eb5905426.js" crossorigin="anonymous"></script>
+
     <title>AssemForU</title>
     
 </head>
 
 <body>
     {% include "navbar.html" %}
+    
     <!-- 기본 템플릿 안에 삽입될 내용 Start -->
     {% block content %}
     <!-- jQuery JS -->
@@ -24,6 +30,7 @@
     <script src="{% static 'bootstrap.min.js' %}"></script>
     {% endblock %}
     <!-- 기본 템플릿 안에 삽입될 내용 End -->
+
 </body>
 
 </html>

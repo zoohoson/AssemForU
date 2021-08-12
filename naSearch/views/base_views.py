@@ -5,25 +5,20 @@ from ..models import Answer
 
 def main_page(request):
     """
-    main 화면
+    main Page
     """
     return render(request, 'naSearch/main_page.html')
 
 
 def index(request):
     """
-    bill 목록 출력
+    bill List
     """
     query_search = request.GET.get('query', '')
     
     if query_search:
         print(query_search)
         Answer.Get_similarity(query_search)
-
-    #page = request.GET.get('page', '1')
-    #paginator = Paginator(bill_list,10)
-    #page_obj = paginator.get_page(page)
-    #context = {'bill_list',page_obj}
 
         bill_list = Answer()
 
@@ -32,10 +27,13 @@ def index(request):
     else :
         return render(request,'naSearch/bill_list.html',{'bill_list': None})
 
+
 def detail(request, bill_id):
     """
     bill info
     """
+    # bill = get_object_or_404(bill_model, pk=bill_id)  # 없는 bill_id요청시 404에러 하고싶은데, bill_model필요하다
+
     bill = 1
     context = {'bill': bill}
     return render(request, 'naSearch/bill_info.html', context)
