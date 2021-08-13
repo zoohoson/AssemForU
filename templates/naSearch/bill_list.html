@@ -1,22 +1,32 @@
 {% extends 'base.html' %}
 {% block content %}
+{% comment %}  이 class container my-3, table, thead-dark는 부트스트랩 지원 스타일 {% endcomment %}
 <div class="container my-3">
     <table class="table">
         <thead>
-            <tr class="thead-dark">
+            <tr class="thead-light">
+                <th>순위</th>
                 <th>의안번호</th>
-                <th>의안</th>
-                <th>유사도</th>
+                <th>의안이름</th>
+                <th>발의기관</th>
+                <th>주관위원회</th>
+                <th>날짜</th>
+                <th>키워드</th>
             </tr>
         </thead>
 
         <tbody>
         {% if bill_list %}
-        {% for bill in bill_list.result %}
-        <tr>
-            <td><a href="/naSearch/{{ bill }}/">{{ bill.0 }}</a></td>
-            <td><a href="/naSearch/{{ bill }}/">{{ bill.1 }}</a></td>
-            <td><a href="/naSearch/{{ bill }}/">{{ bill.2 }}</a></td>
+        {% for bill in bill_list %}
+        <tr class="text-center">
+            <td>{{ bill.0 }}</td>
+            <td>{{ bill.1 }}</td>
+            <td><a method="get" id="bid" name="bid" href="/index/{{ bill.1 }}/">{{ bill.2 }}</a></td>
+            <td>{{ bill.3 }}</td>
+            <td>{{ bill.4 }}</td>
+            <td>{{ bill.5 }}</td>
+            <td>{{ bill.6 }}</td>
+
         </tr>
         {% endfor %}
         {% else %}
@@ -25,37 +35,38 @@
         </tr>
         {% endif %}
         </tbody>
-        
     </table>
-    <!--페이징 처리 시작-->
+
+    <!-- 페이징처리 시작 -->
     <ul class="pagination justify-content-center">
-        <!--이전 페이지-->
+        <!-- 이전페이지 -->
         {% if bill_list.has_previous %}
         <li class="page-item">
-            <a class = "page-link" href="?page={{ bill_list.previous_page_number }}">이전</a>
+            <a class="page-link" href="?page={{ bill_list.previous_page_number }}">이전</a>
         </li>
         {% else %}
         <li class="page-item disabled">
             <a class="page-link" tabindex="-1" aria-disabled="true" href="#">이전</a>
         </li>
         {% endif %}
-        <!--페이지 리스트 -->
+        <!-- 페이지리스트 -->
         {% for page_number in bill_list.paginator.page_range %}
         {% if page_number >= bill_list.number|add:-5 and page_number <= bill_list.number|add:5 %}
             {% if page_number == bill_list.number %}
             <li class="page-item active" aria-current="page">
-                <a class="page-link" href="?page={{ page_number }}">{{ page_number }}</a>
+                 <a class="page-link" data-page="{{ page_number }}" href="#">{{ page_number }}</a>
             </li>
             {% else %}
             <li class="page-item">
-                <a class="page-link" href="?page={{ page_number }}">{{ page_number }}</a>
+                <a class="page-link" data-page="{{ page_number }}" href="#">{{ page_number }}</a>
             </li>
             {% endif %}
         {% endif %}
         {% endfor %}
+        <!-- 다음페이지 -->
         {% if bill_list.has_next %}
         <li class="page-item">
-            <a class="page-link" href="?page={{ bill_list.next_page_number }}">다음</a>
+            <a class="page-link" data-page="{{ bill_list.next_page_number }}" href="#" >다음</a>
         </li>
         {% else %}
         <li class="page-item disabled">
@@ -63,7 +74,28 @@
         </li>
         {% endif %}
     </ul>
-
+    <!-- 페이징처리 끝 -->
 </div>
+{% endblock %}
+{% block script %}
+<script type='text/javascript'>
+$(document).ready(function(){
+    $(".page-link").on('click', function() {
+        $("#page").val($(this).data("page"));
+        $("#searchForm").submit();
+    });
 
+    $("#btn_search").on('click', function() {
+        $("#kw").val($(".kw").val());
+        $("#page").val(1);  // 검색버튼을 클릭할 경우 1페이지부터 조회한다.
+        $("#searchForm").submit();
+    });
+
+    $(".so").on('change',function(){
+        $("#so").val($(this).val());
+        $(("#page").val(1);
+        $("#searchForm").submit();
+    });
+});
+</script>
 {% endblock %}

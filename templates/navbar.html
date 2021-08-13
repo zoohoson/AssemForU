@@ -1,17 +1,21 @@
-    <!-- Navigation Bar -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-light justify-content-between border-bottom fixed-top">
-        <a class="navbar-brand" href="{% url 'naSearch:main' %}">
-            <div class="nalogo_navbar">
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+<!-- Navigation Bar -->
+<nav class='navigation-bar'>
+    <div id="grid">
+        <div id="nalogo-navbar">
+            <a class="logo" href="{% url 'naSearch:main' %}">
                 <img src="https://www.assembly.go.kr/resources/web/assm/images/img/img_assemblyMark_02.gif"
                     alt="NationalAssemblyLogo"
                     srcset="https://www.assembly.go.kr/resources/web/assm/images/img/img_assemblyMark_02.gif 2x">
-            </div>AssemForU</a>
-        
-        <div class="search">
-            <input type="text" placeholder="&#xf002;  검색어를 입력하세요. 비트코인을 입력해보세요.">
-        
-        <form id="searchForm" method="get" action="{% url 'naSearch:index' %}" class="form-inline" >
-            <input id="query" name="query" class="form-control query_search" type="text" placeholder="Search" aria-label="Search" value="{{ kw|default_if_none:'' }}">
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit" id="btn_search">Search</button>
-        </form>
-    </nav>
+            </a>
+            <div>AssemForU</div>
+        </div>
+
+        <div id="search-navbar">
+            <form class="search" method="get" action="{% url 'naSearch:index' %}">
+                <input type="text" id="query" name="query" placeholder="&#xf002;  검색어를 입력하세요. 비트코인을 입력해보세요."value="{{ kw|default_if_none:'' }}">
+            </form>
+        </div>
+    </div>
+</nav>

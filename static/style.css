@@ -1,3 +1,4 @@
+/* .class_name, #id_name, tag_name,  */
 .nalogo{
     text-align: center;
     display: block;
@@ -6,10 +7,22 @@
     margin-inline-start: 0px;
     margin-inline-end: 0px;
 }
+#nalogo-navbar {
+    padding-left: 2em;
+    padding-right: 2em;
+    padding-top: 2em;
+    padding-bottom: 2em;
+}
+#search-navbar {
+    padding-left: 2em;
+    padding-right: 2em;
+    padding-top: 2em;
+    padding-bottom: 2em;
+}
 .search {
     position: relative;
     text-align: center;
-    width: 400px;
+    width: 500px;
     margin: 0 auto;
 }
 input {
@@ -19,4 +32,10 @@ input {
     margin: 10px 0;
     padding: 10px 12px;
     font-family: fontAwesome;
+}
+.navigation-bar #grid {
+    /* border:5px solid pink; */
+    border-bottom: solid;
+    display:grid;
+    grid-template-columns: 150px 1fr;
 }

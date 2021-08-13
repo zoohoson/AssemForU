@@ -1,7 +1,6 @@
-{% load static %}
 <!doctype html>
+{% load static %}
 <html lang="ko">
-
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -16,8 +15,9 @@
         <img src="https://www.assembly.go.kr/resources/web/assm/images/img/img_assemblyMark_02.gif"
             alt="NationalAssemblyLogo">
     </div>
-    <div class="search">
-        <input type="text" placeholder="&#xf002;  검색어를 입력하세요. 비트코인을 입력해보세요.">
-    </div>
+    
+    <form class="search" method="get" action="{% url 'naSearch:index' %}">
+        <input type="text" id="query" name='query' placeholder="&#xf002;  검색어를 입력하세요. 비트코인을 입력해보세요."value="{{ kw|default_if_none:'' }}">
+    </form>
 </body>
 </html>
