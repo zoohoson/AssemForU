@@ -30,3 +30,4 @@ hannanum_Fasttext.model.trainables.vectors_ngrams_lockf.npy
 
 # data
 .csv
+.zip
