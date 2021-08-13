@@ -20,14 +20,21 @@ def main_page(request):
         return render(request, 'naSearch/main_page.html')
 
 
-def detail(request):
+def detail(request, bill_no):
+    data = Model.bill_data
+    # b_data = Model.birdge_data
+    con_data = Model.conf_data
     """
     bill info
     """
-    # bill = get_object_or_404(bill_model, pk=bill_id)  # 없는 bill_id요청시 404에러 하고싶은데, bill_model필요하다
-    bill_id = request.GET.get('bid', '')
-    bill = 1
-    context = {'bill': bill}
+    # bill = get_object_or_404(data.bill_no, pk=bill_no)  # param1이 models객체여야 하는데...
+    bill = data[data['bill_no'] == bill_no][['bill_name', 'propose_date', 'proposers', 'content']].values
+    
+    # con_no_lst = b_data[b_data['bill_no']==bill_no].confer_num.values
+    # bill_con_birdge = pd.DataFrame([[_] for _ in con_no_lst], columns=['confer_num'])
+    # con = con_data.merge(bill_con_bridge, how='inner').content.values
+
+    context = {'bill': bill[0], 'conf': ''}  # only content
     return render(request, 'naSearch/bill_info.html', context)
 
 

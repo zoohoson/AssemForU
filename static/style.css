@@ -39,3 +39,7 @@ input {
     display:grid;
     grid-template-columns: 150px 1fr;
 }
+.card #bill_content #confer_content {  /* 이거왜 안먹힐까 ㅜㅜ */
+    text-align: center;
+    font-weight: bold;
+}
