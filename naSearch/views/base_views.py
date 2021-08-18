@@ -94,6 +94,8 @@ def Get_similarity(query):
         lst = [str(idx+1) + '(' + str(similarity) + ')',
         bill_no, bill_name, bill_agency, bill_comm, bill_date, bill_keyword]
         res.append(lst)
+
+    print(len(res))
     return res
 
 
@@ -102,13 +104,16 @@ def index(request):
     bill 목록 출력
     """
     query_search = request.GET.get('query', '')
-    if query_search:
+    page = request.GET.get('page','')
+    print(query_search, page)
+    if query_search :
         bill_list = Get_similarity(query_search)
-
-        page = request.GET.get('page', '1')
+        if page == '': page = request.GET.get('page', '1')
         paginator = Paginator(bill_list, 10)
         page_obj = paginator.get_page(page)
-        context = {'bill_list':page_obj, 'query': query_search, 'page': page}
+        print(page_obj.number)
+        context = {'bill_list' : page_obj, 'query': query_search}
         return render(request, 'naSearch/bill_list.html', context)
+
     else :
         return render(request,'naSearch/bill_list.html',{'bill_list': None})

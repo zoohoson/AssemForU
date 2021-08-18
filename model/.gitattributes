@@ -1,2 +1,0 @@
-word2vec_with_hannanum_3 filter=lfs diff=lfs merge=lfs -text
-merge_naver_data.csv filter=lfs diff=lfs merge=lfs -text
