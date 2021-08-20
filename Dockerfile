@@ -15,6 +15,8 @@ RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y \
     tzdata \
     wget \
     sudo \
+    net-tools \
+    dnsutils \
     && rm -rf /var/lib/apt/lists/*
 
 RUN mkdir /app
@@ -30,4 +32,13 @@ ENV PATH="/opt/conda/bin:$PATH"
 
 
 RUN conda update -qy conda \
-    && conda install -y -c conda-forge \
+    && conda install -y -c conda-forge --file /app/requirements.txt
+    
+WORKDIR /app/AssemForU
+
+# -- Below : To Docker-compose.yml --
+# # expose the port 8000
+# EXPOSE 8000
+
+# # define the default command to run when starting the container
+# CMD ["gunicorn", "--bind", ":8000", "aggre.wsgi:application"]

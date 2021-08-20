@@ -1,0 +1,27 @@
+version: "2"
+services:
+  assemforu:
+    build : 
+      context : . 
+      dockerfile : ./Dockerfile
+    container_name : assemforu_service
+    # volumes: 
+    #   - /home/synod2/synod2/durumi/workspace/volumes:/home/
+    working_dir : /app/
+    command: > 
+      bash -c "python manage.py migrate   
+      && gunicorn AssemForU.wsgi -b 0.0.0.0:8000 "
+    ports: 
+      - "8000:8000"
+    expose : 
+      - "8000"
+  nginx:
+    image: nginx:latest
+    container_name : nginx_service
+    volumes: 
+      - ./nginx:/etc/nginx/conf.d
+      - ./static:/staticfiles
+    ports:
+      - "80:80"
+    depends_on : 
+      - assemforu
