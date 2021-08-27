@@ -23,7 +23,7 @@ def main_page(request):
 def detail(request, bill_no):
     data = Model.bill_data
     # b_data = Model.birdge_data
-    con_data = Model.conf_data
+    # con_data = Model.conf_data
     """
     bill info
     """

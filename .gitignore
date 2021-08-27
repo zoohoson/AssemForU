@@ -25,9 +25,9 @@ contents
 # param for model
 naSearch/data/
 hannanum_Fasttext.model.trainables.vectors_ngrams_lockf.npy
-.model
-.npy
+*.model
+*.npy
 
 # data
-.csv
-.zip
+*.csv
+*.zip

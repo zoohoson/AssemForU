@@ -10,8 +10,6 @@ RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y \
     build-essential \
     cmake \
     git \
-    hmmer \
-    kalign \
     tzdata \
     wget \
     sudo \
@@ -32,9 +30,9 @@ ENV PATH="/opt/conda/bin:$PATH"
 
 
 RUN conda update -qy conda \
-    && conda install -y -c conda-forge --file /app/requirements.txt
+    && conda install -y -c conda-forge --file /app/assemforu_requirements.txt
     
-WORKDIR /app/AssemForU
+WORKDIR /app
 
 # -- Below : To Docker-compose.yml --
 # # expose the port 8000
