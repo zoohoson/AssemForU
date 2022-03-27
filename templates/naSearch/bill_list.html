@@ -1,16 +1,35 @@
 {% extends 'base.html' %}
+
+{% load static %}
 {% block content %}
-{% comment %}  이 class container my-3, table, thead-dark는 부트스트랩 지원 스타일 {% endcomment %}
+<link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+<!-- Navigation Bar -->
+<div class="container-fluid row stiky-top">
+    <div id="nalogo-navbar">
+        <a class="logo" href="{% url 'naSearch:main' %}">
+            <img src="https://www.assembly.go.kr/resources/web/assm/images/img/img_assemblyMark_02.gif"
+                alt="NationalAssemblyLogo"
+                srcset="https://www.assembly.go.kr/resources/web/assm/images/img/img_assemblyMark_02.gif 2x">
+        </a>
+        <div>AssemForU</div>
+    </div>
+    <div id="search-navbar">
+        <form class="search" method="get" action="{% url 'naSearch:index' %}">
+            <input type="text" id="query" name="query" placeholder="&#xf002;  {{ query }}"value="{{ kw|default_if_none:'' }}">
+        </form>
+    </div>
+</div>
+
 <div class="container my-3">
     <table class="table">
         <thead>
-            <tr class="thead-light">
+            <tr class="table-secondary text-center">
                 <th>순위</th>
                 <th>의안번호</th>
-                <th>의안이름</th>
-                <th>발의기관</th>
-                <th>주관위원회</th>
+                <th class='col-4'>의안이름</th>
+                <th class='col-2'>발의기관</th>
                 <th>날짜</th>
+                <th>주관위원회</th>
                 <th>키워드</th>
             </tr>
         </thead>
@@ -23,8 +42,8 @@
             <td>{{ bill.1 }}</td>
             <td><a href="/index/{{ bill.1 }}/">{{ bill.2 }}</a></td>
             <td>{{ bill.3 }}</td>
-            <td>{{ bill.4 }}</td>
             <td>{{ bill.5 }}</td>
+            <td>{{ bill.4 }}</td>
             <td>{{ bill.6 }}</td>
 
         </tr>

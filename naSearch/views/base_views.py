@@ -84,18 +84,33 @@ def Get_similarity(query):
         bill_no = key[0]
         bill = data[data['bill_no'] == bill_no]
         bill_name = bill['bill_name'].values
+        if len(bill_name):
+            bill_name = bill_name[0]
+        else:
+            bill_name = 'null'
         bill_agency = bill['proposers'].values
-        # print(bill_agency)
+        if len(bill_agency):
+            rep = bill_agency[0].replace("'", "").replace('[', '').replace(']', '')
+            arr = rep.split(', ')
+            if len(arr) == 1:
+                bill_agency = arr[0]
+            else:
+                bill_agency = arr[0] + ' 등 ' + str(len(arr)) + '인'
+        else:
+            bill_agency = 'null'
         bill_comm = 'null'  # bill['committee'].values
         bill_date = bill['propose_date'].values
-        bill_keyword = ['하이데브', '파이팅', 'BISlab짱']
+        if len(bill_date):
+            bill_date = bill_date[0]
+        else:
+            bill_date = 'null'
+        bill_keyword = ['서비스 예정']
 
         similarity = round(key[1][1], 2)
-        lst = [str(idx+1) + '(' + str(similarity) + ')',
+        lst = [str(idx+1) + '\n(' + str(similarity) + ')',
         bill_no, bill_name, bill_agency, bill_comm, bill_date, bill_keyword]
         res.append(lst)
 
-    print(len(res))
     return res
 
 
@@ -111,7 +126,6 @@ def index(request):
         if page == '': page = request.GET.get('page', '1')
         paginator = Paginator(bill_list, 10)
         page_obj = paginator.get_page(page)
-        print(page_obj.number)
         context = {'bill_list' : page_obj, 'query': query_search}
         return render(request, 'naSearch/bill_list.html', context)
 
